@@ -1,0 +1,16 @@
+F:\BabTeb\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+F:\BabTeb\DAL\bin\Debug\netcoreapp3.1\DAL.runtimeconfig.json
+F:\BabTeb\DAL\bin\Debug\netcoreapp3.1\DAL.runtimeconfig.dev.json
+F:\BabTeb\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+F:\BabTeb\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+F:\BabTeb\DAL\bin\Debug\netcoreapp3.1\be.dll
+F:\BabTeb\DAL\bin\Debug\netcoreapp3.1\be.pdb
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.AssemblyReference.cache
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.GeneratedMSBuildEditorConfig.editorconfig
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CopyComplete
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
+F:\BabTeb\DAL\obj\Debug\netcoreapp3.1\DAL.genruntimeconfig.cache

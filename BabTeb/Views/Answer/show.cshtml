@@ -1,0 +1,224 @@
+﻿
+@{
+    ViewData["Title"] = "show";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+@model List<be.answer>
+
+@section pre {
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="description" content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+<meta name="keywords" content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+<meta name="author" content="ThemeSelect">
+<title>DataTable | Materialize - Material Design Admin Template</title>
+<link rel="apple-touch-icon" href="~/app-assets/images/favicon/apple-touch-icon-152x152.png">
+<link rel="shortcut icon" type="image/x-icon" href="~/app-assets/images/favicon/favicon-32x32.png">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- BEGIN: VENDOR CSS-->
+<link rel="stylesheet" type="text/css" href="~/app-assets/vendors/vendors.min.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/extensions/responsive/css/responsive.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/vendors/data-tables/css/select.dataTables.min.css">
+<!-- END: VENDOR CSS-->
+<link rel="stylesheet" type="text/css" href="~/app-assets/css-rtl/style-rtl.css">
+<!-- BEGIN: Page Level CSS-->
+<link rel="stylesheet" type="text/css" href="~/app-assets/css-rtl/themes/vertical-dark-menu-template/materialize.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/css-rtl/themes/vertical-dark-menu-template/style.css">
+<link rel="stylesheet" type="text/css" href="~/app-assets/css/pages/data-tables.css">
+<!-- END: Page Level CSS-->
+<!-- BEGIN: Custom CSS-->
+<link rel="stylesheet" type="text/css" href="~/app-assets/css-rtl/custom/custom.css">
+<!-- END: Custom CSS-->
+}
+
+<div class="row">
+	<div class="col s12 m12 l12">
+		<div id="button-trigger" class="card card card-default scrollspy">
+			<div class="card-content">
+				<h4 class="card-title">لیست سوال و جواب</h4>
+				<div class="row">
+					<div class="col s12">
+
+
+						<div class="chips chips-placeholder input-field"><input class="input" id="66f4c683-e704-8dab-d449-8677d2c2649c" placeholder="Enter a tag"></div>
+						<button id="btn1" type="button" class="btn btn-primary btn-block">جستجو</button>
+					</div>
+
+					<div id="modal1" class="modal">
+						<div class="modal-content">
+							<h4>فرم ویرایش</h4>
+							<div id="html-view-validations">
+								<form asp-action="update" asp-controller="answer" class="formValidate0" id="edittech" method="post" enctype="multipart/form-data">
+									<div class="row">
+										<input type="hidden" id="pId" name="answerId" />
+										<div class="input-field col s12">
+											<label for="uname0"></label>
+											<input class="validate" required="" id="ty" name="question.q" type="text">
+										</div>
+										
+										<div class="input-field col s12">
+											<label for="uname0"></label>
+											<input class="validate" required="" id="br" name="a" type="text">
+										</div>
+										<div class="input-field col s12">
+											<label for="uname0"></label>
+											<input class="validate" required="" id="mo" name="point" type="number">
+										</div>
+										
+										
+										<div class="input-field col s12">
+											<button class="btn waves-effect waves-light right modal-action modal-close" type="submit" name="action" href="#modal1">
+												ارسال
+												<i class="material-icons right">send</i>
+											</button>
+										    
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+
+					</div>
+					<br />
+					<table id="data-table-simple" class="display">
+						<thead>
+							<tr>
+								<th>سوال</th>
+								<th>پاسخ</th>
+								<th>امتیاز</th>
+								<th>ویرایش</th>
+							</tr>
+						</thead>
+						<tbody>
+							@{
+								foreach (var i in Model)
+								{
+									<tr>
+									    <td style="display:none">@i.answerId</td>
+										<td>@i.question.q</td>
+										<td>@i.a</td>
+										<td>@i.point</td>
+										<td>
+											<a class="mb-6 btn-floating waves-effect waves-light cyan lightrn-1 modal-trigger" href="#modal1" onclick="showModal('@i.answerId','@i.question.q','@i.a','@i.point')">
+												<i class="material-icons">update</i>
+											</a>
+										</td>
+									</tr>
+								}
+							}
+
+							
+
+						</tbody>
+						<tfoot>
+							<tr>
+								<th>سوال</th>
+								<th>پاسخ</th>
+								<th>امتیاز</th>
+								<th>ویرایش</th>
+							</tr>
+						</tfoot>
+					</table>
+					<div class="dataTables_paginate paging_simple_numbers" id="multi-select_paginate">
+						<a class="paginate_button previous disabled" area-controls="multi-select" data-dt-idx="0" tabindex ="-1" href=@Url.Action("getskip","answer") id="multi-select_previous">قبلی</a><span>
+							@{
+							BLL.blanswer bla = new BLL.blanswer();
+							int f = bla.gettotal();
+							int count;
+							if (f % 10 == 0) count = f / 10;
+							else count = (f / 10) + 1;
+							for (var i = 0; i < count; i++)
+							{
+								<a class="paginate_button" area-controls="multi-select" data-dt-idx=@i tabindex="0" href=@Url.Action("getskip","answer",new {c=i})>@Convert.ToString(i+1)</a>
+							}
+							}
+						</span>	<a class="paginate_button next" asp-area-controls="multi-select" data-dt-idx="7" tabindex ="1" href=@Url.Action("getskip","answer") id="multi-select_next">بعدی</a>
+						
+						
+						
+				    <div/>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section script{
+<!-- BEGIN VENDOR JS-->
+<script src="~/app-assets/js/vendors.min.js"></script>
+<!-- BEGIN VENDOR JS-->
+<!-- BEGIN PAGE VENDOR JS-->
+<script src="~/app-assets/vendors/data-tables/js/jquery.dataTables.min.js"></script>
+<script src="~/app-assets/vendors/data-tables/extensions/responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/app-assets/vendors/data-tables/js/dataTables.select.min.js"></script>
+<!-- END PAGE VENDOR JS-->
+<!-- BEGIN THEME  JS-->
+<!-- END THEME  JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+<script src="~/app-assets/js/scripts/data-tables.js"></script>
+<!-- END THEME  JS-->
+<!-- BEGIN PAGE LEVEL JS-->
+<script src="~/app-assets/js/scripts/ui-chips.js"></script>
+<script src="~/app-assets/js/scripts/advance-ui-modals.js"></script>
+<!-- END PAGE LEVEL JS-->
+
+
+
+<script>
+	function showModal(answerId,question,point,a){
+		        idd = answerId;
+				
+		        $("#pId").val(answerId);
+				$("#ty").val(question);		        
+				$("#br").val(a);
+				$("#mo").val(point);
+	}
+	$(document).ready(function myfunction(){
+
+		var idd;
+		
+
+		$("form#edittech").submit(function (e){
+
+			e.preventDefault();
+			var formData = new FormData(this);
+			formData.append("id",idd);
+		});
+		$.ajax(
+				{
+					Type: "post",
+					enctype: "multipart/form-data",
+					dataType: "json",
+					url: "@Url.Action("update","answer")",
+					data: formData,
+
+					correntType: false,
+					processData: false,
+					complete: function myFunction () {
+						question.text($("#ty").val());
+						a.text($("#br").val());
+						point.text($("#mo").val());
+						
+					}
+				});
+
+			
+				$("#btn1").click(function (){
+			$.ajax(
+				{
+					dataType: "json",
+					contentType: "application/json;charset=utf-8",
+					url: "@Url.Action("tsjson","answer")",
+
+					success: function(data){
+						window.location = data.redirect + "?" + 'tags=' + JSON.stringify(M.Chips.getInstance($('.chips')).chipsData);
+					},
+				});
+		});
+	});
+</script>
+}
+

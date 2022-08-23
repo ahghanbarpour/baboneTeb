@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewData["Title"] = "create";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+@section pre {
+   
+    <title>Form Validation | Materialize - Material Design Admin Template</title>
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/dropify/css/dropify.min.css">
+    <link rel="stylesheet" type="text/css" href="~/app-assets/vendors/flag-icon/css/flag-icon.min.css">
+    <!-- END: VENDOR CSS-->
+    }
+
+<div class="row">
+                            <div class="col s12">
+                                <div id="html-validations" class="card card-tabs">
+                                    <div class="card-content">
+                                        <div class="card-title">
+                                            <div class="row">
+                                                <div class="col s12 m6 l10">
+                                                    <h4 class="card-title">ورود سوال</h4>
+                                                </div>
+                                                <div class="col s12 m6 l2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="html-view-validations">
+                                            <form asp-action="create" asp-controller="package" class="formValidate0" id="formValidate0" method="post" enctype="multipart/form-data">
+                                                
+                                            <div class="row">
+                                                    <div class="input-field col s12">
+                                                        <label for="uname0" >عنوان*</label>
+                                                        <input class="validate" required="" id="uname0" name="title" type="text">
+                                                    </div>
+
+                                                    <div class="input-field col s12">
+                                                        <label for="uname0" >قیمت*</label>
+                                                        <input class="validate" required="" id="uname0" name="price" type="number">
+                                                    </div>
+
+                                                     <div class="input-field col s12">
+                                                        <label for="uname0" >مرز امتیاز*</label>
+                                                        <input class="validate" required="" id="uname0" name="pointLine" type="number">
+                                                    </div>
+
+                                                    <div class="col s12 m8 l9">
+                                                        <label for="uname0" class="card-title">عکس</label>
+                                                        <input type="file" id="input-file-now" class="dropify" name="pic" data-default-file="" />
+                                                    </div>
+
+                                                    <div class="col s12 m8 l9">
+                                                        <label for="uname0" class="card-title">پی دی اف امتیاز بالا</label>
+                                                        <input type="file" id="input-file-now" class="dropify" name="warmPdf" data-default-file="" />
+                                                    </div>
+
+                                                     <div class="col s12 m8 l9">
+                                                        <label for="uname0" class="card-title">پی دی اف امتیاز پایین</label>
+                                                        <input type="file" id="input-file-now" class="dropify" name="coldPdf" data-default-file="" />
+                                                    </div>
+                                                    
+                                                    <div class="input-field col s12">
+                                                        <label for="uname0">توضیحات*</label>
+                                                        <textarea rows="20" cols="50" class="validate" id="uname0" name="descript" type="text" required></textarea>
+                                                    </div>
+
+                                                    <div class="input-field col s12">
+                                                        <button class="btn waves-effect waves-light right" type="submit" name="action">ارسال
+                                                            <i class="material-icons right">send</i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+@section script {
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="~/app-assets/vendors/jquery-validation/jquery.validate.min.js"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+    <script src="~/app-assets/js/scripts/form-validation.js"></script>
+    <script src="~/app-assets/vendors/dropify/js/dropify.min.js"></script>
+    <script src="~/app-assets/js/scripts/form-file-uploads.js"></script>
+    <!-- END PAGE LEVEL JS-->
+    }
+
+
+

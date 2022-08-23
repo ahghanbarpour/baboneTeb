@@ -1,0 +1,17 @@
+﻿@using Stimulsoft.Report.Web;
+@using Stimulsoft.Report.Mvc;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+
+@Html.StiNetCoreViewer(new StiNetCoreViewerOptions(){
+
+    Actions = {
+        GetReport = "GetReport",
+        ViewerEvent = "ViewerEvent"
+    }
+
+})

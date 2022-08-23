@@ -1,0 +1,81 @@
+﻿@model be.test
+@section pres{
+	
+}
+<div class="product-details-section section-padding">
+                
+            <div class="page-banner-section">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a asp-action="index" asp-controller="home">خانه</a></li>
+                        <li>پرسشنامه</li>
+                    </ul>
+                    @if (ViewBag.SuccessPayment != null)
+                    {
+                        <div class="row">
+                            <strong style="color:red">@ViewBag.SuccessPayment</strong>
+                        </div>
+                    }
+                </div>
+            </div>
+
+						  <form asp-action="startTest" asp-controller="payment" method="post" enctype="multipart/form-data">
+                          <div class="row">
+                          <div class="col-lg-12">
+                            <div class="your-order-area mt-10 mt-lg-0">
+                                <div class="your-order-wrap">
+                                    <div class="your-order-info-wrap">
+                                        
+                                    <div class="col-12">
+                                        <div class="billing-info mb-4">
+                                            <label>شماره همراه <abbr class="required" title="required">*</abbr></label>
+                                            <input name="phoneNumber" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="billing-info mb-4">
+                                            <label>سن <abbr class="required" title="required">*</abbr></label>
+                                            <input name="age" type="number">
+                                        </div>
+                                    </div>
+
+                                <h4 class="checkout-title"><span name="package.packageId" required>پرسشنامه</span> </h4>
+                                
+                                             @foreach (be.question item in ViewBag.questions)
+											{
+                                            <ul>
+                                            <li><input name="packageId" required type="checkbox" hidden checked value="@item.packageId"></li>
+                                            </ul>
+                                        <div class="your-order-shipping">
+                                            <input name="questionId" required type="checkbox" hidden checked>
+                                            <span value="@item.questionId">@item.q</span>
+											<form asp-action="startTest" asp-controller="payment" asp-route-questionId="@item.questionId" class="formValidate0" id="formValidate0" method="post" enctype="multipart/form-data">
+                                            <ul>
+											@foreach (var j in item.answers)
+										   {   
+                                                <li><input name="answerId" required type="radio" value="@j.answerId"><label>@j.a</label></li>
+										   }
+                                            </ul>
+							               </form>        
+                                        </div>
+											}
+                                <div class="place-order">
+                                    <button type="submit">ثبت سفارش</button>
+                                </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+							</form>
+                        </div>
+
+@section Scripts{
+    
+}
+<script>
+    function clickAll(){
+        $("#sbt").submit();
+    }
+</script>

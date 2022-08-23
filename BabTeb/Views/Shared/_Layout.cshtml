@@ -1,0 +1,352 @@
+﻿@using Microsoft.AspNetCore.Http
+@using be;
+@using BLL;
+@using System.Collections.Generic;
+@using Newtonsoft.Json;
+@using Microsoft.AspNetCore.Identity;
+@inject IHttpContextAccessor httpContextAccessor
+@inject UserManager<UserApp> usermanager
+
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>فروشگاه بابونه</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Droon - Drone Shop Single Product template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="keywords" content="bootstrap ecommerce template" />
+    <meta name="author" content="hastech" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/favicon.png">
+
+    <!-- CSS (Font, Vendor, Icon, Plugins & Style CSS files) -->
+
+    <!-- Font CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&amp;family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS (Bootstrap & Icon Font) -->
+    <link rel="stylesheet" href="~/assets/css/vendor/bootstrap.min.css">
+
+    <!-- Plugins CSS (All Plugins Files) -->
+    <link rel="stylesheet" href="~/assets/css/plugins/fancybox.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/icofont.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/ion.rangeSlider.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/simple-line-icons.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/swiper-bundle.min.css">
+
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    @RenderSection("pres", required: false)
+</head>
+<body>
+    <div class="wrapper">
+        <!--== Start: Header Wrapper ==-->
+        <div class="header sticky-header header-transparent">
+            <div class="container-fluid container-1733">
+                <div class="row align-items-center">
+                    <div class="col-6 col-xl-2 col-lg-2">
+                        <!--== Start: Logo ==-->
+                        <div class="header-logo">
+                            <a href="index.html">
+                                <img src="~/assets/images/babone-gold.png" width="85" height="70" alt="logo">
+                                <img class="light" src="~/assets/images/babone-gold.png" width="85" height="70" alt="logo">
+                            </a>
+                        </div>
+                        <!--== End: Logo ==-->
+                    </div>
+
+                    <div class="col-6 col-xl-8 col-lg-7 d-none d-lg-block">
+                        <!--== Start: Menu ==-->
+                        <nav class="main-menu justify-content-center position-relative">
+                            <ul>
+                                <li class="has-sub-menu">
+                                    <a asp-action="index" asp-controller="home">خانه</a>
+                                </li>
+                                
+                                <li><a href="contact.html">با ما تماس بگیرید</a></li>
+                            </ul>
+                        </nav>
+                        <!--== End: Menu ==-->
+                    </div>
+
+                    <div class="col-6 col-xl-2 col-lg-3">
+                        <div class="header-action justify-content-end">
+                            <div class="header-action-item">
+                                <button class="header-action-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-search">
+                                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="search" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-search fa-w-16 fa-2x">
+                                        <path fill="currentColor" d="M508.5 468.9L387.1 347.5c-2.3-2.3-5.3-3.5-8.5-3.5h-13.2c31.5-36.5 50.6-84 50.6-136C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c52 0 99.5-19.1 136-50.6v13.2c0 3.2 1.3 6.2 3.5 8.5l121.4 121.4c4.7 4.7 12.3 4.7 17 0l22.6-22.6c4.7-4.7 4.7-12.3 0-17zM208 368c-88.4 0-160-71.6-160-160S119.6 48 208 48s160 71.6 160 160-71.6 160-160 160z" class=""></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            @{
+
+                                var packageId = new List<int>();
+                                if (httpContextAccessor.HttpContext.Session.GetString("basket") != null)
+                                {
+                                    packageId = JsonConvert.DeserializeObject<List<int>>(httpContextAccessor.HttpContext.Session.GetString("basket"));
+                                }
+                                var blp = new blpackage();
+                                var packages = blp.searchById(packageId);
+
+                            }
+                            <div class="header-action-item">
+                                <button class="header-action-toggle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-cart"><i class="icofont-cart"><span class="count">@packages.Count</span></i> <span class="amount"> @packages.Sum(s => s.price) تومان  </span></button>
+                            </div>
+
+
+                            <div class="offcanvas offcanvas-end" id="offcanvas-cart">
+            <div class="offcanvas-header header-offcanvas-header">
+                <h5>سبد خرید</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"><i class="icofont-close"></i></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column">
+                <div class="header-cart-body">
+                    <div class="header-cart-products">
+                            @foreach (var item in packages)
+                            {
+                        <div class="header-cart-product">
+
+                            <div class="header-cart-product-thumb">
+                                <a asp-action="datails" asp-controller="package" class="header-cart-product-image"><img src="~/assets/images/photos/@item.pic" alt="House Coffee Original" width="88" height="100"></a>
+                                <button class="header-cart-product-remove"><i class="icon-close"></i></button>
+                            </div>
+                            <div class="header-cart-product-content">
+                                <h5 class="header-cart-product-title"><a asp-action="details" asp-controller="package" asp-route-id="@item.packageId">پکیج @item.title</a></h5>
+                                <span class="header-cart-product-quantity">@item.price تومان </span>
+                            </div>    
+
+                        </div>
+                            }
+                       
+                    </div>
+                </div>
+                <div class="header-cart-footer">
+                    <h4 class="header-cart-total">جمع : <span>@packages.Sum(s => s.price)</span></h4>
+                    <div class="header-cart-buttons">
+                        <a asp-action="pay" asp-controller="profile" class="footer-cart-btn">صندوق</a>
+                        <a href="cart.html" class="footer-cart-btn">مشاهده سبد خرید</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+                            <div class="header-action-item dropdown">
+                                <button class="header-action-toggle" type="button" data-bs-toggle="dropdown"><i class="icofont-gear-alt"></i></button>
+                                <div class="dropdown-menu header-dropdown-menu">
+                                    <h6 class="header-dropdown-menu-title">حساب</h6>
+                                    
+                                    @if(User.Identity.IsAuthenticated)
+                                    {
+                                        var user = await usermanager.FindByNameAsync(User.Identity.Name);
+
+                                        <ul>
+                                        <li><a>@user.FirstName @user.LastName</a></li>
+                                        <li><a>سفارشات من</a></li>
+                                        <li><a asp-action="logout" asp-controller="account">خروج</a></li>
+                                    </ul>
+                                    }
+                                    else
+                                    {
+                                    <ul>
+                                        <li><a asp-action="login" asp-controller="account">وارد شدن</a></li>
+                                        <li><a asp-action="register" asp-controller="account">ثبت نام</a></li>
+                                    </ul>
+                                    }
+                                    
+                                </div>
+                            </div>
+                            <div class="header-action-item d-flex d-lg-none">
+                                <button class="header-action-toggle header-action-offcanvas-menu" type="button" data-bs-toggle="offcanvas" data-bs-target="#AsideOffcanvasMenu"><i class="icon-menu"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                            <aside class="off-canvas-wrapper offcanvas offcanvas-start" tabindex="-1" id="AsideOffcanvasMenu" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h6 class="d-none" id="offcanvasExampleLabel">منوی کنار</h6>
+                <button class="btn-menu-close" data-bs-dismiss="offcanvas" aria-label="Close">منو <i class="icofont-rounded-left"></i></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="mobile-menu-action">
+                    <!-- Mobile Menu Start -->
+                    <div class="mobile-menu-items">
+                        <ul class="nav-menu">
+                            <li>
+                                <a href="#">خانه</a>
+                                <ul class="mobile-sub-menu">
+                                    <li><a href="index.html">خانه یک</a></li>
+                                    <li><a href="index-2.html">خانه دو</a></li>
+                                    <li><a href="index-3.html">خانه سه</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">فروشگاه</a>
+
+                                <ul class="mobile-sub-menu">
+                                    <li>
+                                        <a href="#">چیدمان شبکه فروشگاهی</a>
+
+                                        <ul class="mobile-sub-menu">
+                                            <li><a href="product.html">فروشگاه شبکه ای نوار سمت راست</a></li>
+                                            <li><a href="product-right-sidebar.html">فروشگاه شبکه ای نوار سمت چپ </a></li>
+                                            <li><a href="product-3-column.html">فروشگاه شبکه ای ۳ ستون</a></li>
+                                            <li><a href="product-4-column.html">فروشگاه شبکه ای ۴ ستون</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">چیدمان فهرست فروشگاه</a>
+
+                                        <ul class="mobile-sub-menu">
+                                            <li><a href="product-list-left-sidebar.html">فهرست فروشگاه نوار کناری سمت راست</a></li>
+                                            <li><a href="product-list-right-sidebar.html">فهرست فروشگاه نوار کناری سمت چپ</a></li>
+                                            <li><a href="product-list-no-sidebar.html">لیست فروشگاه (بدون نوار کناری)</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">صفحات محصول</a>
+
+                                        <ul class="mobile-sub-menu">
+                                            <li><a href="product-details.html">مشخصات محصول</a></li>
+                                            <li><a href="product-details-sticky-content.html">جزئیات محتوای محصول  چسبنده</a></li>
+                                            <li><a href="product-details-thumbnail-right.html">جزئیات محصول تصویر کوچک سمت راست</a></li>
+                                            <li><a href="product-details-gallery.html">گالری جزئیات محصول</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                    <a href="#">دیگران</a>
+
+                                        <ul class="mobile-sub-menu">
+                                            <li><a href="shopping-cart.html">سبد خرید</a></li>
+                                            <li><a href="checkout.html">صندوق</a></li>
+                                            <li><a href="wishlist.html">لیست علاقه مندیها</a></li>
+                                            <li><a href="my-account.html">حساب من</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">صفحات</a>
+
+                                <ul class="mobile-sub-menu">
+                                    <li><a href="about-us.html">درباره ما</a></li>
+                                    <li><a href="contact.html">با ما تماس بگیرید</a></li>
+                                    <li><a href="login.html">وارد شدن</a></li>
+                                    <li><a href="register.html">ثبت نام</a></li>
+                                    <li><a href="faq.html">سوالات متداول</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">وبلاگ</a>
+
+                                <ul class="mobile-sub-menu">
+                                    <li><a href="blog-left-sidebar.html">نوار کناری سمت راست وبلاگ</a></li>
+                                    <li><a href="blog-right-sidebar.html">نوار کناری سمت چپ وبلاگ</a></li>
+                                    <li><a href="blog.html">وبلاگ بدون نوار کناری</a></li>
+                                    <li><a href="blog-details.html">جزئیات وبلاگ در نوار کناری سمت راست</a></li>
+                                    <li><a href="blog-details-right-sidebar.html">جزئیات وبلاگ در نوار کناری سمت چپ</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="contact.html">با ما تماس بگیرید</a></li>
+                        </ul>
+                    </div>
+                    <!-- Mobile Menu End -->
+                </div>
+                <div class="mobile-menu-social">
+                    <a href="#"><i class="icon-social-facebook"></i></a>
+                    <a href="#"><i class="icon-social-twitter"></i></a>
+                    <a href="#"><i class="icon-social-instagram"></i></a>
+                    <a href="#"><i class="icon-social-youtube"></i></a>
+                    <a href="#"><i class="icon-social-pinterest"></i></a>
+                </div>
+            </div>
+        </aside>
+                </div>
+            </div>
+        </div>
+        <!--== End: Header Wrapper ==-->
+      </div>
+
+    <div class="container main">
+        <div role="main" class="pb-3 row">
+            @RenderBody()
+        </div>
+    </div>
+
+        <footer class="footer-section section">
+            <!--== Start: Footer Main ==-->
+            <div class="footer-main" data-bg-img="~/assets/images/photos/bg3.jpg">
+                <div class="container">
+                    <div class="row mb-n6">
+                        
+                        
+                        <div class="col-md-4 col-lg-2 mb-6">
+                            <!--== Start: Footer Widget ==-->
+                            <div class="footer-widget">
+                                <h4 class="footer-widget-title">مارا دنبال کنید در</h4>
+                                <h4 class="collapsed-title collapsed" data-bs-toggle="collapse" data-bs-target="#dividerId-4" aria-expanded="false">مارا دنبال کنید در</h4>
+                                <div id="dividerId-4" class="widget-collapse-body collapse">
+                                    <ul class="social-widget-nav">
+                                        <li><a href="#"><i class="icon-social-facebook"></i>فیسبوک</a></li>
+                                        <li><a href="#"><i class="icon-social-twitter"></i>توییتر</a></li>
+                                        <li><a href="#"><i class="icon-social-instagram"></i>اینستاگرام</a></li>
+                                        <li><a href="#"><i class="icon-social-youtube"></i>یوتیوب</a></li>
+                                        <li><a href="#"><i class="icon-social-pinterest"></i>پینترست</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--== Start: Footer Widget ==-->
+                        </div>
+                        <div class="col-md-8 col-lg-4 mb-6">
+                            <!--== Start: Footer Widget ==-->
+                            <div class="footer-widget">
+                                <h4 class="footer-widget-title">اطلاعات درباره</h4>
+                                <div class="about-widget">
+                                    <div class="subscribe-form-widget">
+                                        <p class="subscribe-form-desc mb-3">شماره تماس:</p>
+                                        <p class="subscribe-form-desc mb-3">09393523510 </p>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--== Start: Footer Widget ==-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--== End: Footer Main ==-->
+
+            <!--== Start: Footer Bottom ==-->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row flex-row-reverse flex-md-row align-items-center">
+                        <div class="col-md-6 text-center text-md-end">
+                            <p class="footer-copyright">© Baboone Teb. طراحی شده <i class="icofont-heart" style="color:red"></i> توسط <a target="_blank" >امیرحسین قنبرپور</a></p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <!--== End: Footer Bottom ==-->
+        </footer>
+    <script src="~/assets/js/vendor/modernizr-3.11.7.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-migrate-3.3.2.min.js"></script>
+    <script src="~/assets/js/vendor/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugins JS -->
+    <script src="~/assets/js/plugins/fancybox.min.js"></script>
+    <script src="~/assets/js/plugins/ion.rangeSlider.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.countdown.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.sticky-sidebar.min.js"></script>
+    <script src="~/assets/js/plugins/jquery.zoom.min.js"></script>
+    <script src="~/assets/js/plugins/swiper-bundle.min.js"></script>
+
+    <!-- Custom Main JS -->
+    <script src="~/assets/js/main.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

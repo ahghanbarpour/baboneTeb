@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+            <div class="hero-slider-section position-relative">
+                <div class="swiper hero-slider-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide hero-slide3-item">
+                            <div class="container">
+                                <div class="hero-slide3-content">
+                                    <h1 class="hero-slide3-title">فروشگاه طب سنتی بابونه</h1>
+                                    <p class="hero-slide3-desc">تعیین بهترین پهپاد موجود به عوامل مختلفی بستگی دارد و واقعاً همه از بین خواهند رفت.</p>
+                                    <a class="hero-slide3-btn">موارد بیشتر</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @{
+                 var q = new BLL.blintro();
+                 var intro = q.read();
+             }
+             <div class="product-section section-padding-b">
+                <div class="container">
+            <div class="section-padding-b">
+                <div class="container position-relative">
+             @foreach (var item in intro)
+            {
+                    <img src="~/assets/images/photos/@item.pic" width="1170" height="550" alt="Image">
+                    <a class="ht-video-popup" data-fancybox data-type="iframe" href="~/assets/videos/@item.videoIntro"><i class="icofont-play"></i></a>
+            }
+                </div>
+            </div>
+            </div>
+            </div>
+
+            @await Component.InvokeAsync("Packages")
+           

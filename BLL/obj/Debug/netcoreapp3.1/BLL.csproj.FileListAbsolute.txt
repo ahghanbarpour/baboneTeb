@@ -1,0 +1,15 @@
+F:\BabTeb\BLL\bin\Debug\netcoreapp3.1\BLL.deps.json
+F:\BabTeb\BLL\bin\Debug\netcoreapp3.1\BLL.dll
+F:\BabTeb\BLL\bin\Debug\netcoreapp3.1\BLL.pdb
+F:\BabTeb\BLL\bin\Debug\netcoreapp3.1\be.dll
+F:\BabTeb\BLL\bin\Debug\netcoreapp3.1\DAL.dll
+F:\BabTeb\BLL\bin\Debug\netcoreapp3.1\be.pdb
+F:\BabTeb\BLL\bin\Debug\netcoreapp3.1\DAL.pdb
+F:\BabTeb\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.AssemblyReference.cache
+F:\BabTeb\BLL\obj\Debug\netcoreapp3.1\BLL.GeneratedMSBuildEditorConfig.editorconfig
+F:\BabTeb\BLL\obj\Debug\netcoreapp3.1\BLL.AssemblyInfoInputs.cache
+F:\BabTeb\BLL\obj\Debug\netcoreapp3.1\BLL.AssemblyInfo.cs
+F:\BabTeb\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.CoreCompileInputs.cache
+F:\BabTeb\BLL\obj\Debug\netcoreapp3.1\BLL.csproj.CopyComplete
+F:\BabTeb\BLL\obj\Debug\netcoreapp3.1\BLL.dll
+F:\BabTeb\BLL\obj\Debug\netcoreapp3.1\BLL.pdb

@@ -1,0 +1,121 @@
+﻿@using Microsoft.AspNetCore.Http
+@using be;
+@using BLL;
+@using System.Collections.Generic;
+@using Newtonsoft.Json;
+@inject IHttpContextAccessor httpContextAccessor
+@model be.package
+
+@{
+}
+
+            <div class="product-area section-padding">
+                <div class="container">
+                    @if (ViewBag.error != null)
+                    {
+                        <div class="row">
+                            <strong style="color:red">@ViewBag.error</strong>
+                        </div>
+                    }
+        @{
+            var blp = new blpackage();
+            var q = blp.read();
+            var p = from i in q select i.warmPdf;
+        }
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="cart-table-wrap table-responsive">
+                                <table class="cart-table">
+                                    <thead>
+                                        <tr>
+                                            <th class="width-thumbnail"></th>
+                                            <th class="width-name">محصول</th>
+                                            <th class="width-price"> قیمت</th>
+                                            <th class="width-quantity">تعداد</th>
+                                            <th class="width-remove"></th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody>
+                                @{
+                                    var packageIds = new List<int>();
+                                    if (httpContextAccessor.HttpContext.Session.GetString("basket") != null)
+                                {
+                                    packageIds = JsonConvert.DeserializeObject<List<int>>(httpContextAccessor.HttpContext.Session.GetString("basket"));
+                                }
+                                    var packages = blp.searchById(packageIds);
+                                }
+                                        @foreach (var item in packages)
+                                       {
+                                        <tr>
+
+
+                                            <td class="product-thumbnail">
+                                                <a asp-action="details" asp-controller="package" asp-route-id="@item.packageId"><img class="w-100" src="~/assets/images/photos/@item.pic" alt="Image" width="210" height="240"></a>
+                                            </td>
+                                            <td class="product-name">
+                                                <h5><a asp-action="details" asp-controller="package" asp-route-id="@item.packageId">پکیج @item.title</a></h5>
+                                            </td>
+                                            <td class="product-price"><span class="amount">@item.price تومان </span></td>
+                                            <td class="cart-quality">
+                                                <div class="product-details-quality">
+                                                    <div class="pro-qty">
+                                                        <input type="text" title="Quantity" value="۱">
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="product-remove"><a href="#/"><i class="icon-close"></i></a></td>
+                                        </tr>
+                                       }
+                                       <tr>
+                                           
+                                            <td class="width-subtotal"><b>جمع کل</b></td>
+                                            <td class="product-total"><span><b>@packages.Sum(s => s.price) تومان</b></span></td>
+                                       </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart-shiping-update-wrapper">
+                                @if (packages.Sum(a => a.price) == 0)
+                               {
+                                <div class="cart-shiping-btn continure-btn">
+                                    <a asp-action="pay" asp-controller="payment" style="pointer-events: none" class="btn btn-link">پرداخت</a>
+                                </div>
+                               }
+                               else
+                               {
+                                <div class="cart-shiping-btn continure-btn">
+                                    <a asp-action="pay" asp-controller="payment" class="btn btn-link">پرداخت</a>
+                                </div>
+                               }
+
+                                <div class="cart-shiping-btn update-btn">
+                                    <a asp-action="ClearBasket" asp-controller="Order" class="btn btn-link">خالی کردن سبدخرید</a>
+                                </div>
+                                                 <div class="row">
+                                @if (ViewBag.link != null)
+                                  {
+                                     foreach (var item in packages)
+                                     {
+                                         foreach (var j in item.questions)
+                                         {
+                                             if (j.answers.Sum(a => a.point) >= item.pointLine)
+                                             {
+                                                     <h3><a href="~/assets/PDFs/@item.warmPdf">@ViewBag.link</a></h3>
+                                             }
+                                             else
+                                             {
+                                                     <h3><a href="~/assets/PDFs/@item.coldPdf">@ViewBag.link</a></h3>
+                                             }
+                                         }
+                                     }
+                                   }
+                                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                        </div>
+                    </div>
+                </div>
+            </div>

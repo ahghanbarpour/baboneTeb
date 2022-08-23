@@ -1,0 +1,50 @@
+﻿@section pres{
+	
+}
+<div class="product-details-section section-padding">
+                
+            <div class="page-banner-section">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a asp-action="index" asp-controller="home">خانه</a></li>
+                        <li>پرسشنامه</li>
+                    </ul>
+                </div>
+            </div>
+								<form asp-action="index" asp-controller="test" class="formValidate0" id="formValidate0" method="post" enctype="multipart/form-data">
+                          <div class="row">
+                          <div class="col-lg-12">
+                            <div class="your-order-area mt-10 mt-lg-0">
+                                <div class="your-order-wrap">
+                                    <div class="your-order-info-wrap">
+                                        
+                                <h4 class="checkout-title">پرسشنامه </h4>
+                                             @foreach (be.question item in ViewBag.questions)
+											{
+                                        <div class="your-order-shipping">
+                                            <span name="q" value="@item.questionId">@item.q</span>
+											<form asp-action="index" asp-controller="test" class="formValidate0" id="formValidate0" method="post" enctype="multipart/form-data">
+											@foreach (be.answer j in ViewBag.answers)
+										   {   
+                                            <ul>
+                                                <li><input type="radio" name="a" value="@item.answerId"><label>@j.a</label></li>
+                                            </ul>
+										   }
+							               </form>        
+                                        </div>
+											}
+                                    </div>
+                                    
+                                </div>
+                                <div class="place-order">
+                                    <button href="checkout.html" type="submit">ثبت سفارش</button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+							</form>
+                        </div>
+
+@section Scripts{
+    
+}

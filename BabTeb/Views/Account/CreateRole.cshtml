@@ -1,0 +1,23 @@
+﻿@model RoleViewModel
+@{
+    ViewBag.Title = "CreateRole";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<h2>ایجاد نقش</h2>
+@Html.ActionLink("فهرست نقش ها", "Index") | @Html.ActionLink("مدیریت نقش کاربر", "ManageUserRoles")
+<hr/>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div>
+       نام نقش
+    </div>
+    <p>
+        @Html.TextBox("RoleName")
+        <span asp-validation-for="RoleName"></span>
+    </p>
+    <input type="submit" value="ذخیره" />
+}

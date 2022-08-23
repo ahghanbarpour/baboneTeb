@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "create";
+    Layout = "~/Views/Shared/_Layout_admin.cshtml";
+}
+
+<div class="row">
+                            <div class="col s12">
+                                <div id="html-validations" class="card card-tabs">
+                                    <div class="card-content">
+                                        <div class="card-title">
+                                            <div class="row">
+                                                <div class="col s12 m6 l10">
+                                                    <h4 class="card-title">ورود سوال</h4>
+                                                </div>
+                                                <div class="col s12 m6 l2">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="html-view-validations">
+                                            <form asp-action="create" asp-controller="question" class="formValidate0" id="formValidate0" method="post" enctype="multipart/form-data">
+                                                
+                                            <div class="select-wrapper"><select class="error" id="crole" name="packageId" data-error=".errorTxt6" required>
+                                                <option value="">پکیج*</option>
+                                            
+                                                @foreach(be.package item in ViewBag.packages)
+                                                {
+                                                    
+                                                            
+                                                            <option value="@item.packageId">@item.title</option>
+                                                        
+                                                }
+                                            </select>
+                                            </div>
+
+                                            <div class="row">
+                                                    <div class="input-field col s12">
+                                                        <label for="uname0" >عنوان*</label>
+                                                        <input class="validate" required="" id="uname0" name="q" type="text">
+                                                    
+                                                    
+                                                    <div class="input-field col s12">
+                                                        <button class="btn waves-effect waves-light right" type="submit" name="action">ارسال
+                                                            <i class="material-icons right">send</i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+

@@ -1,0 +1,96 @@
+﻿
+@model be.package
+
+
+            <div class="product-details-section section-padding">
+                
+            <div class="page-banner-section">
+                <div class="container">
+                    <ul class="breadcrumb">
+                        <li><a asp-action="index" asp-controller="home">خانه</a></li>
+                        <li>مشخصات پکیج</li>
+                    </ul>
+                </div>
+            </div>
+                <div class="container">
+                    <!-- Single Product Top Area Start -->
+                    <div class="row row-cols-lg-2 row-cols-1 mb-n8">
+
+                        <!-- Product Image Start -->
+                        <div class="col mb-6 mb-8">
+                            <div class="single-product-image">
+
+                                <!-- Product Image Slider Start -->
+                                <div class="product-image-slider swiper">
+                                    
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide image-zoom"><img src="~/assets/images/photos/@Model.pic" width="700" height="800" alt="Image-HasTech"></div>
+                                    </div>
+                                    <div class="swiper-pagination d-none"></div>
+                                    <div class="swiper-button-prev d-none"></div>
+                                    <div class="swiper-button-next d-none"></div>
+                                </div>
+                                <!-- Product Image Slider End -->
+
+
+                            </div>
+                        </div>
+                        <!-- Product Image End -->
+
+                        <!-- Product Content Start -->
+                        <div class="col mb-6 mb-8">
+                            <div class="single-product-content">
+                                <h3 class="single-product-title">پکیج @Model.title</h3>
+                           
+                                <div class="single-product-price">قیمت: @Model.price تومان</div>
+                                <ul class="single-product-meta">
+                                    <li><span class="label">توضیحات:</span> <p class="value">@Model.descript</p></li>
+                                </ul>
+                                <div class="single-product-text">
+                                </div>
+
+                                <div class="single-product-actions">
+                                    <div class="single-product-actions-item">
+                                        <div class="product-quantity-count">
+                                            <button class="dec qty-btn">-</button>
+                                            <input class="product-quantity-box" type="text" name="quantity" value="1">
+                                            <button class="inc qty-btn">+</button>
+                                        </div>
+                                    </div>
+                                    <div class="single-product-actions-item"><a asp-action="addToBasket" asp-controller="order" asp-route-packageId="@Model.packageId" class="btn btn-cart">افزودن به سبد خرید</a></div>
+                                    <div class="single-product-actions-item"><button class="btn btn-icon "><i class="icon-heart"></i></button></div>
+                                    <div class="single-product-actions-item"><button class="btn btn-icon"><i class="icon-refresh"></i></button></div>
+                                </div>
+                                
+                                
+                  
+                            </div>
+                        </div>
+                        <!-- Product Content End -->
+
+                    </div>
+                    <!-- Single Product Top Area End -->
+
+                    <!-- Single Product Bottom (Description) Area Start -->
+                    <div class="single-product-description-area">
+                        <div class="nav single-product-description-area-nav">
+                            <button class="active" data-bs-toggle="tab" data-bs-target="#product-description">توضیحات</button>
+                        </div>
+                        <div class="tab-content">
+                            <!-- Description Start -->
+                            <div class="tab-pane fade show active" id="product-description">
+                                <div class="single-product-description">
+                                    <p>@Model.descript</p>
+                                </div>
+                            </div>
+                            <!-- Description End -->
+
+                            
+
+                           
+
+                        </div>
+                    </div>
+                    <!-- Single Product Bottom (Description) Area End -->
+                </div>
+            </div>

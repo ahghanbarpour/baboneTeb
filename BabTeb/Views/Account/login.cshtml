@@ -1,0 +1,28 @@
+﻿@model RegisterModel
+@{
+}
+            <!-- Login Section Start -->
+            <div class="section section-padding">
+                <div class="container">
+                    <div class="login-register-form">
+                        <h3 class="title">وارد شدن</h3>
+                        <p>لطفا با استفاده از جزئیات حساب زیر ثبت نام کنید.</p>
+                        <form asp-action="login" asp-controller="account">
+                            <div class="row row-cols-1 g-4">
+                                <div class="col"><input asp-for="Username" class="form-field" type="text" placeholder="نام کاربری"></div>
+                                <div class="col"><input asp-for="Password" class="form-field" type="password" placeholder="رمزعبور"></div>
+                                <div class="row" style="color:red">
+
+                                    @Html.ValidationSummary()
+
+                                </div>
+                                <div class="col"><input class="btn w-100" type="submit" value="ورود"></div>
+                                <div class="col">
+                                    <p>حساب کاربری ندارید؟ <a asp-action="register" asp-controller="account"><b>یکی بساز</b></a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Login Section End -->
