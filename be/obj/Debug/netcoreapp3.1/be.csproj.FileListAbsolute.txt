@@ -8,3 +8,13 @@ F:\BabTeb\be\obj\Debug\netcoreapp3.1\be.AssemblyInfo.cs
 F:\BabTeb\be\obj\Debug\netcoreapp3.1\be.csproj.CoreCompileInputs.cache
 F:\BabTeb\be\obj\Debug\netcoreapp3.1\be.dll
 F:\BabTeb\be\obj\Debug\netcoreapp3.1\be.pdb
+D:\Programs\github\BabTeb\be\bin\Debug\netcoreapp3.1\be.deps.json
+D:\Programs\github\BabTeb\be\bin\Debug\netcoreapp3.1\be.dll
+D:\Programs\github\BabTeb\be\bin\Debug\netcoreapp3.1\be.pdb
+D:\Programs\github\BabTeb\be\obj\Debug\netcoreapp3.1\be.csproj.AssemblyReference.cache
+D:\Programs\github\BabTeb\be\obj\Debug\netcoreapp3.1\be.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programs\github\BabTeb\be\obj\Debug\netcoreapp3.1\be.AssemblyInfoInputs.cache
+D:\Programs\github\BabTeb\be\obj\Debug\netcoreapp3.1\be.AssemblyInfo.cs
+D:\Programs\github\BabTeb\be\obj\Debug\netcoreapp3.1\be.csproj.CoreCompileInputs.cache
+D:\Programs\github\BabTeb\be\obj\Debug\netcoreapp3.1\be.dll
+D:\Programs\github\BabTeb\be\obj\Debug\netcoreapp3.1\be.pdb

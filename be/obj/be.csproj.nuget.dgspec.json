@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\BabTeb\\be\\be.csproj": {}
+    "D:\\Programs\\github\\BabTeb\\be\\be.csproj": {}
   },
   "projects": {
-    "F:\\BabTeb\\be\\be.csproj": {
+    "D:\\Programs\\github\\BabTeb\\be\\be.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\BabTeb\\be\\be.csproj",
+        "projectUniqueName": "D:\\Programs\\github\\BabTeb\\be\\be.csproj",
         "projectName": "be",
-        "projectPath": "F:\\BabTeb\\be\\be.csproj",
-        "packagesPath": "C:\\Users\\Amirhossein\\.nuget\\packages\\",
-        "outputPath": "F:\\BabTeb\\be\\obj\\",
+        "projectPath": "D:\\Programs\\github\\BabTeb\\be\\be.csproj",
+        "packagesPath": "C:\\Users\\Amir\\.nuget\\packages\\",
+        "outputPath": "D:\\Programs\\github\\BabTeb\\be\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Amirhossein\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Amir\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.412\\RuntimeIdentifierGraph.json"
         }
       }
     }
