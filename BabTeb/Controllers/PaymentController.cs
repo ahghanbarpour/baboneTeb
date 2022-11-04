@@ -72,9 +72,9 @@ namespace BabTeb.Controllers
                     Description = "پرداخت فاکتور شماره:" + order.orderId,
                     Email = order.user.Email,
                     Amount = order.totalPrice,
-                    MerchantId = "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-                }, ZarinPal.Class.Payment.Mode.sandbox);
-                return Redirect($"https://sandbox.zarinpal.com/pg/StartPay/{result.Authority}");
+                    MerchantId = "619cf374-6811-4a69-909c-ac48a92756ea"
+                }, ZarinPal.Class.Payment.Mode.zarinpal);
+                return Redirect($"https://zarinpal.com/pg/StartPay/{result.Authority}");
 
 
         }

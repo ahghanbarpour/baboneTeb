@@ -1,0 +1,15 @@
+F:\BabTeb\BLL\bin\Release\netcoreapp3.1\win-x64\BLL.deps.json
+F:\BabTeb\BLL\bin\Release\netcoreapp3.1\win-x64\BLL.dll
+F:\BabTeb\BLL\bin\Release\netcoreapp3.1\win-x64\BLL.pdb
+F:\BabTeb\BLL\bin\Release\netcoreapp3.1\win-x64\be.dll
+F:\BabTeb\BLL\bin\Release\netcoreapp3.1\win-x64\DAL.dll
+F:\BabTeb\BLL\bin\Release\netcoreapp3.1\win-x64\be.pdb
+F:\BabTeb\BLL\bin\Release\netcoreapp3.1\win-x64\DAL.pdb
+F:\BabTeb\BLL\obj\Release\netcoreapp3.1\win-x64\BLL.GeneratedMSBuildEditorConfig.editorconfig
+F:\BabTeb\BLL\obj\Release\netcoreapp3.1\win-x64\BLL.AssemblyInfoInputs.cache
+F:\BabTeb\BLL\obj\Release\netcoreapp3.1\win-x64\BLL.AssemblyInfo.cs
+F:\BabTeb\BLL\obj\Release\netcoreapp3.1\win-x64\BLL.csproj.CoreCompileInputs.cache
+F:\BabTeb\BLL\obj\Release\netcoreapp3.1\win-x64\BLL.csproj.CopyComplete
+F:\BabTeb\BLL\obj\Release\netcoreapp3.1\win-x64\BLL.dll
+F:\BabTeb\BLL\obj\Release\netcoreapp3.1\win-x64\BLL.pdb
+F:\BabTeb\BLL\obj\Release\netcoreapp3.1\win-x64\BLL.csproj.AssemblyReference.cache

@@ -1,0 +1,10 @@
+F:\BabTeb\be\bin\Release\netcoreapp3.1\be.deps.json
+F:\BabTeb\be\bin\Release\netcoreapp3.1\be.dll
+F:\BabTeb\be\bin\Release\netcoreapp3.1\be.pdb
+F:\BabTeb\be\obj\Release\netcoreapp3.1\be.csproj.AssemblyReference.cache
+F:\BabTeb\be\obj\Release\netcoreapp3.1\be.GeneratedMSBuildEditorConfig.editorconfig
+F:\BabTeb\be\obj\Release\netcoreapp3.1\be.AssemblyInfoInputs.cache
+F:\BabTeb\be\obj\Release\netcoreapp3.1\be.AssemblyInfo.cs
+F:\BabTeb\be\obj\Release\netcoreapp3.1\be.csproj.CoreCompileInputs.cache
+F:\BabTeb\be\obj\Release\netcoreapp3.1\be.dll
+F:\BabTeb\be\obj\Release\netcoreapp3.1\be.pdb

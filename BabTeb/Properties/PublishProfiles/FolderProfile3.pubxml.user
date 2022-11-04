@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\Amirhossein\Desktop\publish</_PublishTargetUrl>
+    <History>True|2022-08-26T17:44:50.8617441Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="CON1">
+      <Value>Data Source=185.141.106.83\MSSQLSERVER2019%3b Initial Catalog=BabTeb%3b Integrated Security=True%3b User ID=babone%3b Password=%40mj3523510%25</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

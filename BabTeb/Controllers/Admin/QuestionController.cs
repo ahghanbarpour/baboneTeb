@@ -16,7 +16,7 @@ namespace BabTeb.Controllers.Admin
             return View();
         }
         [HttpPost]
-        public void create(Models.question question)
+        public IActionResult create(Models.question question)
         {
             blquestion blq = new blquestion();
             be.question q = new question();
@@ -25,6 +25,8 @@ namespace BabTeb.Controllers.Admin
             q.q = question.q;
 
             blq.create(q);
+
+            return RedirectToAction("create", "question");
         }
     }
 }

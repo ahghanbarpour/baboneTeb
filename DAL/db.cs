@@ -21,7 +21,7 @@ namespace DAL
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //TODO Move connection string to a secure location
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-K43MI5S; Initial Catalog=baboneTeb; Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=185.141.106.83\\MSSQLSERVER2019; Initial Catalog=BabTeb; User ID=babone; Password=@mj3523510%");
             base.OnConfiguring(optionsBuilder);
 
         }

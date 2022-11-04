@@ -1,0 +1,15 @@
+F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.deps.json
+F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.runtimeconfig.json
+F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.runtimeconfig.dev.json
+F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.dll
+F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.pdb
+F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\be.dll
+F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\be.pdb
+F:\BabTeb\DAL\obj\Release\netcoreapp3.1\win-x64\DAL.GeneratedMSBuildEditorConfig.editorconfig
+F:\BabTeb\DAL\obj\Release\netcoreapp3.1\win-x64\DAL.AssemblyInfoInputs.cache
+F:\BabTeb\DAL\obj\Release\netcoreapp3.1\win-x64\DAL.AssemblyInfo.cs
+F:\BabTeb\DAL\obj\Release\netcoreapp3.1\win-x64\DAL.csproj.CoreCompileInputs.cache
+F:\BabTeb\DAL\obj\Release\netcoreapp3.1\win-x64\DAL.csproj.CopyComplete
+F:\BabTeb\DAL\obj\Release\netcoreapp3.1\win-x64\DAL.dll
+F:\BabTeb\DAL\obj\Release\netcoreapp3.1\win-x64\DAL.pdb
+F:\BabTeb\DAL\obj\Release\netcoreapp3.1\win-x64\DAL.genruntimeconfig.cache

@@ -25,7 +25,7 @@ namespace BabTeb.Controllers.Admin
             return View();
         }
         [HttpPost]
-        public void create(Models.package package)
+        public IActionResult create(Models.package package)
         {
             blpackage blp = new blpackage();
             be.package p = new be.package();
@@ -39,6 +39,8 @@ namespace BabTeb.Controllers.Admin
             p.coldPdf = ulf.uploadPdf(package.coldPdf);
 
             blp.create(p);
+
+            return RedirectToAction("create", "package");
         }
         [Authorize(Roles = "Admin")]
         public IActionResult show()

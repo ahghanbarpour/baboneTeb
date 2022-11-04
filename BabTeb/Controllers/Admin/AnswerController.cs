@@ -18,7 +18,7 @@ namespace BabTeb.Controllers.Admin
             return View();
         }
         [HttpPost]
-        public void create(Models.answer answer)
+        public IActionResult create(Models.answer answer)
         {
             blanswer bla = new blanswer();
             be.answer a = new answer();
@@ -28,6 +28,8 @@ namespace BabTeb.Controllers.Admin
             a.point = answer.point;
 
             bla.create(a);
+
+            return RedirectToAction("create","answer");
         }
         [Authorize(Roles = "Admin")]
         public IActionResult show()
