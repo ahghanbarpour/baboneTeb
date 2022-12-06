@@ -18,7 +18,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.runtimeconfig.json" target="lib\netcoreapp3.1\DAL.runtimeconfig.json" />
-    <file src="F:\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.dll" target="lib\netcoreapp3.1\DAL.dll" />
+    <file src="D:\Programs\github\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.runtimeconfig.json" target="lib\netcoreapp3.1\DAL.runtimeconfig.json" />
+    <file src="D:\Programs\github\BabTeb\DAL\bin\Release\netcoreapp3.1\win-x64\DAL.dll" target="lib\netcoreapp3.1\DAL.dll" />
   </files>
 </package>
